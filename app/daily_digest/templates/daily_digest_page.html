@@ -1,0 +1,70 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <title>前沿文章日报</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+  <link rel="stylesheet" href="/static/css/daily_digest.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="logo">Frontier Digest</div>
+    <nav>
+      <a href="/daily-digest">Daily Digest</a>
+    </nav>
+  </header>
+
+  <main class="container digest-container">
+    <section class="digest-header">
+      <div>
+        <h1>前沿文章日报</h1>
+        <p class="digest-subtitle">聚焦大模型应用开发与算法前沿</p>
+        <div class="digest-meta">
+          <span>当前日期：<strong id="digest-date">{{ date }}</strong></span>
+          <span>条目数：<strong id="digest-count">-</strong></span>
+        </div>
+      </div>
+      <div class="digest-controls">
+        <input type="date" id="date-picker" value="{{ date }}" />
+        <button id="run-digest" class="btn">生成日报</button>
+      </div>
+    </section>
+
+    <section class="digest-status card">
+      <div class="card-title">生成状态</div>
+      <div class="status-row">
+        <div id="status-spinner" class="spinner hidden"></div>
+        <div id="digest-status-text" class="status-text">就绪</div>
+      </div>
+      <div id="status-detail" class="status-detail">等待任务</div>
+      <div id="status-metrics" class="status-metrics">暂无统计</div>
+      <div class="progress-bar">
+        <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+      </div>
+      <div class="status-steps">
+        <div id="step-fetch" class="step pending">抓取前一天内容</div>
+        <div id="step-score" class="step pending">相关性评分与摘要</div>
+        <div id="step-report" class="step pending">生成日报与保存</div>
+      </div>
+    </section>
+
+    <section class="digest-overview card">
+      <div class="card-title">概览</div>
+      <div id="digest-overview" class="overview-text">加载中...</div>
+    </section>
+
+    <section class="digest-nav">
+      <button id="prev-day" class="btn ghost">前一天</button>
+      <button id="next-day" class="btn ghost">后一天</button>
+      <span class="hint">可切换日期查看不同日报</span>
+    </section>
+
+    <section class="digest-items">
+      <div class="card-title">详情</div>
+      <div id="digest-list" class="digest-list"></div>
+    </section>
+  </main>
+
+  <script src="/static/js/daily_digest.js"></script>
+</body>
+</html>

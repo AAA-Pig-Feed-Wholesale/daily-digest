@@ -1,0 +1,54 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Environment variables (never commit secrets)
+.env
+.env.local
+.env.*.local
+
+# Database / data
+/data/
+*.db
+*.sqlite
+*.sqlite3
+
+# Configs with secrets
+configs/providers.yaml
+
+# Logs
+*.log
+logs/
+
+# Test / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.pyre/
+.mypy_cache/
+.ruff_cache/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+.wheels/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

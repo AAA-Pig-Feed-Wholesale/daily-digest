@@ -1,0 +1,119 @@
+sources:
+- name: arxiv_cs_ai
+  type: rss
+  base_url: https://export.arxiv.org/rss/cs.AI
+  enabled: true
+  topic_hint: research
+  priority: 10
+
+- name: arxiv_cs_cl
+  type: rss
+  base_url: https://export.arxiv.org/rss/cs.CL
+  enabled: true
+  topic_hint: research
+  priority: 10
+
+- name: arxiv_cs_lg
+  type: rss
+  base_url: https://export.arxiv.org/rss/cs.LG
+  enabled: true
+  topic_hint: research
+  priority: 10
+- name: github_watchlist
+  type: api
+  base_url: https://api.github.com
+  enabled: true
+  topic_hint: opensource
+  priority: 9
+- name: hf_papers
+  type: structured_page
+  base_url: https://huggingface.co/papers
+  enabled: true
+  topic_hint: papers
+  priority: 8
+- name: hf_papers_trending
+  type: structured_page
+  base_url: https://huggingface.co/papers/trending
+  enabled: true
+  topic_hint: papers
+  priority: 8
+- name: huggingface_blog
+  type: structured_page
+  base_url: https://huggingface.co/blog
+  enabled: true
+  topic_hint: blog
+  priority: 7
+github_watchlists:
+  repos:
+  - langchain-ai/langgraph
+  - qdrant/qdrant
+  - vllm-project/vllm
+  - ollama/ollama
+  - run-llama/llama_index
+  - open-webui/open-webui
+daily_digest_info_sources:
+  - name: hacker_news
+    rss_url: https://news.ycombinator.com/rss
+
+  - name: google_blog
+    rss_url: https://blog.google/feed/
+    list_url: https://blog.google/innovation-and-ai/
+
+  - name: reddit_machinelearning
+    rss_url: https://www.reddit.com/r/MachineLearning/.rss
+
+  - name: reddit_localllama
+    rss_url: https://www.reddit.com/r/LocalLLaMA/.rss
+
+  - name: lobsters
+    rss_url: https://lobste.rs/rss
+
+  - name: jiqizhixin
+    rss_url: https://www.jiqizhixin.com/rss
+    list_url: https://www.jiqizhixin.com/
+
+  - name: qbitai
+    rss_url: https://www.qbitai.com/feed
+    list_url: https://www.qbitai.com/
+
+  - name: 36kr_ai
+    list_url: https://36kr.com/column/ai
+
+  - name: infoq_ai
+    rss_url: https://www.infoq.cn/feed
+    list_url: https://www.infoq.cn/topic/AI
+
+  - name: leiphone_ai
+    rss_url: https://www.leiphone.com/feed
+    list_url: https://www.leiphone.com/category/ai
+
+  - name: geekpark_ai
+    list_url: https://www.geekpark.net/c/ai
+
+  - name: ifanr_ai
+    rss_url: https://www.ifanr.com/feed/
+    list_url: https://www.ifanr.com/tags/ai
+
+  - name: aigc_cn
+    list_url: https://www.aigc.cn/
+
+  - name: damoxingzhijia
+    list_url: https://www.damoxingzhijia.com/
+
+  - name: aifront
+    list_url: https://www.aifront.cn/
+
+  - name: baai_hub
+    list_url: https://hub.baai.ac.cn/
+
+  - name: juejin_ai
+    list_url: https://juejin.cn/ai
+
+  - name: csdn_ai
+    list_url: https://blog.csdn.net/nav/ai
+
+  - name: paperweekly
+    list_url: https://www.paperweekly.site/
+
+  - name: swarma
+    list_url: https://www.swarma.org/

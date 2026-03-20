@@ -1,0 +1,6 @@
+prompts:
+  classify: "classify_prompt"
+  summarize: "summarize_prompt"
+  extract: "extract_prompt"
+  report: "report_prompt"
+  qa: "qa_prompt"
