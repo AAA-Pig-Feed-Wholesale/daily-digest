@@ -1,7 +1,7 @@
 ﻿llm_fallbacks: []
 openai_compatible:
   api_key: ""
-  base_url: "https://coding.dashscope.aliyuncs.com/"
+  base_url: ""
   model: "qwen3.5-plus"
   embedding_api_key: ""
   embedding_base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"

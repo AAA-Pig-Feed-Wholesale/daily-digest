@@ -9,6 +9,19 @@
 - 可配置**相关性最低阈值**（MIN_RELEVANCE_SCORE）
 - 本地 SQLite 存储
 
+## 本地拉取后需要自行配置的内容
+拉取代码后，你需要按实际情况补全以下配置：
+1. `.env`（从 `.env.example.safe` 复制并填写）
+   - `GITHUB_TOKEN`：避免 GitHub API 限流
+   - `HF_TOKEN`：访问 Hugging Face（如网络可达）
+   - `MIN_RELEVANCE_SCORE`：低于该分数不展示
+2. `configs/providers.yaml`
+   - 从 `configs/providers.example.yaml` 复制并填写真实 API Key/模型信息
+3. `configs/sources.yaml`
+   - 根据需求启用/禁用数据源或调整 RSS/列表页链接
+
+
+
 ## 系统功能概览
 1. 多源抓取：支持 RSS 与列表页两种方式，RSS 优先，列表页兜底
 2. 正文补全：对候选条目抓取正文，提升摘要与评分质量
