@@ -69,8 +69,9 @@ daily_digest_info_sources:
     rss_url: https://lobste.rs/rss
 
   - name: jiqizhixin
-    rss_url: https://www.jiqizhixin.com/rss
-    list_url: https://www.jiqizhixin.com/
+    rss_url: https://mcp.applications.jiqizhixin.com/rss
+    list_url: https://clawhub.ai/orgs/jiqizhixin
+    mcp_url: https://mcp.applications.jiqizhixin.com/mcp
 
   - name: qbitai
     rss_url: https://www.qbitai.com/feed

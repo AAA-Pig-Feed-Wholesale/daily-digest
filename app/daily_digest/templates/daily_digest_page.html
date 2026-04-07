@@ -30,21 +30,28 @@
       </div>
     </section>
 
-    <section class="digest-status card">
-      <div class="card-title">生成状态</div>
-      <div class="status-row">
-        <div id="status-spinner" class="spinner hidden"></div>
-        <div id="digest-status-text" class="status-text">就绪</div>
+    <section class="digest-status card" id="digest-status">
+      <div class="status-header">
+        <div>
+          <div class="card-title">生成状态</div>
+          <div class="status-row">
+            <div id="status-spinner" class="spinner hidden"></div>
+            <div id="digest-status-text" class="status-text">就绪</div>
+          </div>
+        </div>
+        <button id="toggle-status" class="btn ghost small" type="button" aria-expanded="true" aria-controls="digest-status-body">收起</button>
       </div>
-      <div id="status-detail" class="status-detail">等待任务</div>
-      <div id="status-metrics" class="status-metrics">暂无统计</div>
-      <div class="progress-bar">
-        <div id="progress-fill" class="progress-fill" style="width:0%"></div>
-      </div>
-      <div class="status-steps">
-        <div id="step-fetch" class="step pending">抓取前一天内容</div>
-        <div id="step-score" class="step pending">相关性评分与摘要</div>
-        <div id="step-report" class="step pending">生成日报与保存</div>
+      <div id="digest-status-body" class="status-body">
+        <div id="status-detail" class="status-detail">等待任务</div>
+        <div id="status-metrics" class="status-metrics">暂无统计</div>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+        </div>
+        <div class="status-steps">
+          <div id="step-fetch" class="step pending">抓取前一天内容</div>
+          <div id="step-score" class="step pending">相关性评分与摘要</div>
+          <div id="step-report" class="step pending">生成日报与保存</div>
+        </div>
       </div>
     </section>
 
@@ -65,6 +72,6 @@
     </section>
   </main>
 
-  <script src="/static/js/daily_digest.js"></script>
+  <script src="/static/js/daily_digest.js?v=20260321"></script>
 </body>
 </html>

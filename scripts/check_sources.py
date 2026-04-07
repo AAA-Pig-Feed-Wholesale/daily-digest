@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 from typing import Any
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 import feedparser
 import httpx
@@ -27,6 +28,24 @@ def _http_client() -> httpx.Client:
         headers={"User-Agent": UA},
         trust_env=True,
     )
+
+
+def _append_jiqizhixin_token(url: str | None) -> str | None:
+    if not url:
+        return url
+    if not settings.JIQIZHIXIN_TOKEN:
+        return url
+    try:
+        parsed = urlparse(url)
+        if parsed.netloc != "mcp.applications.jiqizhixin.com":
+            return url
+        query_items = parse_qsl(parsed.query, keep_blank_values=True)
+        if any(k == "token" and v for k, v in query_items):
+            return url
+        query_items.append(("token", settings.JIQIZHIXIN_TOKEN))
+        return urlunparse(parsed._replace(query=urlencode(query_items, doseq=True)))
+    except Exception:
+        return url
 
 
 def fetch_rss(url: str) -> tuple[int, str | None]:
@@ -113,6 +132,8 @@ def main() -> int:
         name = info.get("name")
         rss_url = info.get("rss_url")
         list_url = info.get("list_url")
+        rss_url = _append_jiqizhixin_token(rss_url)
+        list_url = _append_jiqizhixin_token(list_url)
         if not name:
             continue
         rss_part = "rss=-"

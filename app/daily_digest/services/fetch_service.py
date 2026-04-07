@@ -82,6 +82,24 @@ def _normalize_url(url: str) -> str:
         return url
 
 
+def _append_jiqizhixin_token(url: str | None) -> str | None:
+    if not url:
+        return url
+    if not settings.JIQIZHIXIN_TOKEN:
+        return url
+    try:
+        parsed = urlparse(url)
+        if parsed.netloc != "mcp.applications.jiqizhixin.com":
+            return url
+        query_items = parse_qsl(parsed.query, keep_blank_values=True)
+        if any(k == "token" and v for k, v in query_items):
+            return url
+        query_items.append(("token", settings.JIQIZHIXIN_TOKEN))
+        return urlunparse(parsed._replace(query=urlencode(query_items, doseq=True)))
+    except Exception:
+        return url
+
+
 def _dedup(items: list[dict]) -> tuple[list[dict], int]:
     seen_urls: set[str] = set()
     seen_titles: set[str] = set()
@@ -122,6 +140,8 @@ def _get_info_sources() -> list[dict]:
             rss_url = s.get("rss_url") or s.get("url")
             list_url = s.get("list_url")
             if name and (rss_url or list_url):
+                rss_url = _append_jiqizhixin_token(rss_url)
+                list_url = _append_jiqizhixin_token(list_url)
                 result.append({"name": name, "rss_url": rss_url, "list_url": list_url})
         if result:
             return result

@@ -88,6 +88,29 @@ function resetSteps() {
   renderMetrics(null);
 }
 
+function setStatusCollapsed(collapsed) {
+  const section = document.getElementById("digest-status");
+  const btn = document.getElementById("toggle-status");
+  const body = document.getElementById("digest-status-body");
+  if (!section || !btn) return;
+  if (collapsed) {
+    section.classList.add("collapsed");
+    btn.textContent = "展开";
+    btn.setAttribute("aria-expanded", "false");
+    if (body) body.setAttribute("hidden", "");
+  } else {
+    section.classList.remove("collapsed");
+    btn.textContent = "收起";
+    btn.setAttribute("aria-expanded", "true");
+    if (body) body.removeAttribute("hidden");
+  }
+  try {
+    localStorage.setItem("digestStatusCollapsed", collapsed ? "1" : "0");
+  } catch {
+    // ignore storage errors
+  }
+}
+
 function applyStatus(data) {
   const status = data?.status || "idle";
   const msg = data?.message || "就绪";
@@ -245,9 +268,24 @@ window.addEventListener("DOMContentLoaded", () => {
   const runBtn = document.getElementById("run-digest");
   const prevBtn = document.getElementById("prev-day");
   const nextBtn = document.getElementById("next-day");
+  const toggleBtn = document.getElementById("toggle-status");
 
   const initialDate = datePicker.value;
   loadDigest(initialDate);
+
+  let collapsed = false;
+  try {
+    collapsed = localStorage.getItem("digestStatusCollapsed") === "1";
+  } catch {
+    collapsed = false;
+  }
+  setStatusCollapsed(collapsed);
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const isCollapsed = document.getElementById("digest-status")?.classList.contains("collapsed");
+      setStatusCollapsed(!isCollapsed);
+    });
+  }
 
   runBtn.addEventListener("click", () => runDigest(datePicker.value));
 

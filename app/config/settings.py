@@ -53,6 +53,7 @@ class Settings(BaseSettings):
 
     GITHUB_TOKEN: str | None = None
     HF_TOKEN: str | None = None
+    JIQIZHIXIN_TOKEN: str | None = None
 
     MIN_RELEVANCE_SCORE: int = 15
 
